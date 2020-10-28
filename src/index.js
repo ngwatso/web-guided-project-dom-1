@@ -4,28 +4,39 @@
 //  Select the following single elements from the div.card
 
 // A- finding across the entire DOM
-const header = null
-const logoTitle = null
-const firstCard = null
+const header = document.querySelector('h2')
+const logoTitle = document.getElementById('logo-title')
+const firstCard = document.querySelector('div.card:nth-of-type(1)')
+console.log(firstCard);
 // B- finding within one particular element
-const imageFirstCard = null
-const titleFirstCard = null
-const subtitleFirstCard = null
-const textFirstCard = null
+const imageFirstCard = document.querySelector('img')
+const titleFirstCard = document.querySelector('h2.card-title')
+const subtitleFirstCard = document.querySelector('h3')
+const textFirstCard = document.querySelector('p.card-text')
 // C- traversing with dot notation
-const link1FirstCard = null
-const link2FirstCard = null
+const link1FirstCard = textFirstCard.nextElementSibling
+const link2FirstCard = link1FirstCard.nextElementSibling
+console.log(link2FirstCard)
 
 
 // 👉 2- Finding collections of elements in the DOM
 // A- Find all the anchor tags inside the nav element
+const navItems = document.querySelectorAll('nav a')
+console.log(navItems)
 // B- Loop over the links and console.log their text content
+navItems.forEach(a => console.log(a.textContent))
 // C- Turn the collection of links into a real array
+const arrNavItems = Array.from(navItems)
+console.log(arrNavItems)
 // D- Use .filter to find the anchor tag with the textContent of "Home"
-
+const result = arrNavItems.filter(a => a.textContent === "Home")
+console.log(result)
 
 // 👉 3- Changing an element's text content
 //  A- Change the cat-related content into dog-related content
+document.querySelector('h1').textContent = 'Lambda Dog'
+document.querySelector('img.card-img-top').src = 'https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074__340.jpg'
+document.querySelector('img.card-img-top').setAttribute('alt', 'dogs are man\'s best friend')
 //  B- Have the students research online the difference between textContent and innerText
 
 
@@ -37,16 +48,23 @@ const link2FirstCard = null
 // 👉 5- Changing the styling of an element
 //  A- By changing the class names on the element with the classList API
 //  B- By manipulating inline styles on the element
-
+const h2 = document.querySelector('h2.card-title')
+h2.getElementsByClassName.color = 'red'
 
 // 👉 6- Creating new elements from scratch and appending them
 // Create a new link inside the nav for "Blog"
+const blogNavItem = document.createElement('a')
+blogNavItem.textContent = 'Blog'
+blogNavItem.classList.add('menu-item')
+document.querySelector('nav').appendChild(blogNavItem)
+console.log(blogNavItem)
 
 
 // 👉 7- Making a copy of the card and appending it to the card group
 // DOM nodes can only exist in one spot in the DOM
 // We cannot append the same copy multiple times
-
+const secondCard = firstCard.cloneNode(true)
+document.querySelector('div.card-group').appendChild(secondCard)
 
 // 👉 8- Removing an existing element and putting it back [STRETCH if time allows]
 
